@@ -1,6 +1,4 @@
-package it.rosalba.buststopsgtt.json;
-
-import it.rosalba.busstopsgtt.data.GttStop;
+package it.rosalba.busstopsgtt.json;
 
 import java.util.ArrayList;
 
@@ -9,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.util.Log;
+import it.rosalba.busstopsgtt.data.GttStop;
 
 public class ParseJsonAllStops {
 	public ParseJsonAllStops() {
@@ -29,7 +28,7 @@ public class ParseJsonAllStops {
 					GttStop newGttStop = new GttStop();
 					JSONObject jsonGttStop = gttStop.getJSONObject(j);
 					if (jsonGttStop.has("lat")) {
-						float stopLat = jsonGttStop.getLong("lat");
+						double stopLat = jsonGttStop.getDouble("lat");
 						newGttStop.setLatitude(stopLat);
 					} else {
 						newGttStop.setLatitude(0);
@@ -43,7 +42,7 @@ public class ParseJsonAllStops {
 
 					}
 					if (jsonGttStop.has("lng")) {
-						float stopLng = jsonGttStop.getLong("lng");
+						double stopLng = jsonGttStop.getDouble("lng");
 						newGttStop.setLongitude(stopLng);
 
 					} else {
@@ -67,8 +66,7 @@ public class ParseJsonAllStops {
 
 					}
 					if (jsonGttStop.has("placeName")) {
-						String stopPlaceName = jsonGttStop
-								.getString("placeName");
+						String stopPlaceName = jsonGttStop.getString("placeName");
 						newGttStop.setPlaceName(stopPlaceName);
 
 					} else {
@@ -76,10 +74,10 @@ public class ParseJsonAllStops {
 
 					}
 					if (jsonGttStop.has("id")) {
-						int stopId ;
-						try{
-						stopId = jsonGttStop.getInt("id");
-						}catch (Exception e){
+						int stopId;
+						try {
+							stopId = jsonGttStop.getInt("id");
+						} catch (Exception e) {
 							stopId = -1;
 						}
 						newGttStop.setId(stopId);

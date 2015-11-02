@@ -1,8 +1,4 @@
-package it.rosalba.buststopsgtt.json;
-
-
-import it.rosalba.busstopsgtt.data.Departure;
-import it.rosalba.busstopsgtt.data.GttStopDetail;
+package it.rosalba.busstopsgtt.json;
 
 import java.util.ArrayList;
 
@@ -11,6 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.util.Log;
+import it.rosalba.busstopsgtt.data.Departure;
+import it.rosalba.busstopsgtt.data.GttStopDetail;
 
 public class ParseJsonStopDetail {
 
@@ -21,15 +19,10 @@ public class ParseJsonStopDetail {
 	public ArrayList<GttStopDetail> parserJson(String jsonString, int idStop) {
 		ArrayList<GttStopDetail> stopDetailList = new ArrayList<GttStopDetail>();
 
-		
 		if (jsonString != null) {
 			try {
-				//JSONObject jsonStop = new JSONObject(jsonString);
-				JSONArray gttStop = new JSONArray(jsonString);//null;
+				JSONArray gttStop = new JSONArray(jsonString);// null;
 				Log.e("object json ", "details object json " + gttStop.toString());
-				// Getting JSON Array node
-				
-				//gttStop = jsonStop.getJSONArray(jsonStop.names()[0]);
 				Log.e("details ", "details lenght " + gttStop.length());
 				// looping through All GttStop
 				for (int j = 0; j < gttStop.length(); j++) {
@@ -61,22 +54,18 @@ public class ParseJsonStopDetail {
 						stopDetail.setLineType("");
 
 					}
-				
+
 					if (jsonGttStop.has("departures")) {
 						// array di departures
-						// JSONObject conditionObj =
-						// jsonGttStop.getJSONObject("departures");
 						ArrayList<Departure> departuresList = new ArrayList<Departure>();
 						JSONArray gttDepartures = null;
 						// Getting JSON Array node
 						gttDepartures = jsonGttStop.getJSONArray("departures");
 						for (int z = 0; z < gttDepartures.length(); z++) {
 							Departure departure = new Departure();
-							JSONObject jsonObjDeparture = gttDepartures
-									.getJSONObject(z);
+							JSONObject jsonObjDeparture = gttDepartures.getJSONObject(z);
 							if (jsonObjDeparture.has("arrivalTimeInt")) {
-								int arrivalTimeInt = jsonObjDeparture
-										.getInt("arrivalTimeInt");
+								int arrivalTimeInt = jsonObjDeparture.getInt("arrivalTimeInt");
 								departure.setArrivalTimeInt(arrivalTimeInt);
 
 							} else {
@@ -85,8 +74,7 @@ public class ParseJsonStopDetail {
 							}
 
 							if (jsonObjDeparture.has("time")) {
-								String timeString = jsonObjDeparture
-										.getString("time");
+								String timeString = jsonObjDeparture.getString("time");
 								departure.setTime(timeString);
 
 							} else {
@@ -94,8 +82,7 @@ public class ParseJsonStopDetail {
 
 							}
 							if (jsonObjDeparture.has("rt")) {
-								Boolean realTime = jsonObjDeparture
-										.getBoolean("rt");
+								Boolean realTime = jsonObjDeparture.getBoolean("rt");
 								departure.setRealTime(realTime);
 
 							} else {
@@ -115,7 +102,7 @@ public class ParseJsonStopDetail {
 					stopDetailList.add(stopDetail);
 				}
 
- 			} catch (JSONException e) {
+			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 

@@ -1,13 +1,10 @@
 package it.rosalba.busstopsgtt.data;
 
-
-
-
 public class Departure {
 	private boolean realTime;
 	private String time;
 	private int arrivalTimeInt;
-	
+
 	public boolean getRealTime() {
 		return this.realTime;
 	}
@@ -23,7 +20,7 @@ public class Departure {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	
+
 	public int getArrivalTimeInt() {
 		return this.arrivalTimeInt;
 	}
@@ -31,9 +28,5 @@ public class Departure {
 	public void setArrivalTimeInt(int arrivalTimeInt) {
 		this.arrivalTimeInt = arrivalTimeInt;
 	}
-
-	
-
-	
 
 }

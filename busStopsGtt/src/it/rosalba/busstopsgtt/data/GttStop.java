@@ -1,8 +1,6 @@
 package it.rosalba.busstopsgtt.data;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class GttStop {
 	private int id;
@@ -11,8 +9,8 @@ public class GttStop {
 	private String placement;
 	private String type;
 	private ArrayList<String> lines = new ArrayList<String>();
-	private float lat;
-	private float lng;
+	private double lat;
+	private double lng;
 
 	public int getId() {
 		return this.id;
@@ -59,35 +57,34 @@ public class GttStop {
 	}
 
 	public void setArrayLines(ArrayList<String> lines) {
-		// Collections.copy(lines, lines);
 		this.lines = lines;
 	}
 
 	public void setLines(String data) {
-		//modifica la stringa e setta l'array di stringhe
+		// modifica la stringa e setta l'array di stringhe
 		ArrayList<String> listLines = new ArrayList<String>();
 		String[] allLines = data.split(",");
-		for (int i = 0; i< allLines.length; i++){
+		for (int i = 0; i < allLines.length; i++) {
 			String line = allLines[i];
 			listLines.add(line);
 		}
-		
+
 		this.lines = listLines;
 	}
 
-	public float getLatitude() {
+	public double getLatitude() {
 		return this.lat;
 	}
 
-	public void setLatitude(float lat) {
+	public void setLatitude(double lat) {
 		this.lat = lat;
 	}
 
-	public float getLongitude() {
+	public double getLongitude() {
 		return this.lng;
 	}
 
-	public void setLongitude(float lng) {
+	public void setLongitude(double lng) {
 		this.lng = lng;
 	}
 }

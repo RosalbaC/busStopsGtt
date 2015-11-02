@@ -2,14 +2,12 @@ package it.rosalba.busstopsgtt.data;
 
 import java.util.ArrayList;
 
-
 public class GttStopDetail {
 	private int idStop;
 	private String longNameBus;
 	private String nameBus;
 	private String lineType;
 	private ArrayList<Departure> departures = new ArrayList<Departure>();
-
 
 	public int getIdStop() {
 		return this.idStop;
@@ -35,16 +33,13 @@ public class GttStopDetail {
 		this.nameBus = name;
 	}
 
-	
 	public ArrayList<Departure> getDepartures() {
 		return this.departures;
 	}
 
 	public void setDepartures(ArrayList<Departure> departures) {
-		// Collections.copy(lines, lines);
 		this.departures = departures;
 	}
-	
 
 	public String getLineType() {
 		return this.lineType;

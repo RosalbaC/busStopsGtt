@@ -2,45 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="${relativePackage}.${activityClass}" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       
         android:orientation="horizontal" >
 
         <SearchView
             android:id="@+id/searchViewStop"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-             android:gravity="start" >
+            android:layout_height="match_parent"
+            android:gravity="start" >
         </SearchView>
-
-        <Button
-            android:id="@+id/buttonToMap"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Go to map"
-             android:gravity="end" />
-
-       
     </LinearLayout>
 
-   <!--   <AutoCompleteTextView
-        android:id="@+id/searchStop"
+    <Button
+        android:id="@+id/buttonToMap"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-    </AutoCompleteTextView>
--->
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="Go to map" />
 
     <ListView
         android:id="@+id/ListViewStops"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
     </ListView>
 
 </LinearLayout>
