@@ -45,23 +45,17 @@
         <activity
             android:name="it.rosalba.busstopsgtt.MapActivity"
             android:label="@string/app_name" >
-           <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
+
         <meta-data
-        android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
-             <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyBhdgzP466dxS2ctU0ZpK-AZVees0oQA_w" />
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBhdgzP466dxS2ctU0ZpK-AZVees0oQA_w" />
     </application>
-    <!-- Goolge Maps API Key -->
-    <!--
-         <meta-data
-        android:name="com.google.android.maps.v2.API_KEY"
-        android:value="AIzaSyBhdgzP466dxS2ctU0ZpK-AZVees0oQA_w" />
-    -->
 
 </manifest>
