@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
@@ -40,6 +42,7 @@ public class MainActivity extends Activity implements
 	private TextView searchStop;
 	private SearchView searchViewStop;
 	private ArrayAdapter<String> adapterStops;
+	private Button goToMap;
 
 	final Context context = this;
 	// private AutoCompleteTextView autoSearchStops;
@@ -55,11 +58,17 @@ public class MainActivity extends Activity implements
 		this.listStops = (ListView) findViewById(R.id.ListViewStops);
 		// this.autoSearchStops = (AutoCompleteTextView)
 		// findViewById(R.id.searchStop);
-
+		
+		this.goToMap = (Button) findViewById(R.id.buttonToMap);
+		this.goToMap.setEnabled(true);
+		this.goToMap.setOnClickListener(stopsMap);
+		
 		try {
 			allStops = request.getAllStops(url);
 			Log.d("List", "allStops size  " + allStops.size());
 			setStopsList();
+			
+			
 		} catch (IOException e) {
 		
 			e.printStackTrace();
@@ -206,6 +215,24 @@ public class MainActivity extends Activity implements
 	public boolean onQueryTextSubmit(String query) {
 		return false;
 	}
+	
+	
+	
+View.OnClickListener stopsMap = new View.OnClickListener() {
+		
+		public void onClick(View v)
+		{
+			
+			int REQUEST_CODE = 1; // code for request
+			// ArrayList<DeviceHome> d = new ArrayList<DeviceHome>();
+			// d = ;
+			Intent intentMapActivity = new Intent(MainActivity.this, MapActivity.class);
+			//intentMapActivity.putExtra(n("Stops", allStops);
+			startActivityForResult(intentMapActivity, REQUEST_CODE);
+			
+		}
+	};
+	
 	/*
 	 * private void setupSearchView() {
 	 * 
@@ -225,4 +252,33 @@ public class MainActivity extends Activity implements
 	 * before, int count) { // TODO Auto-generated method stub
 	 * adapterStops.getFilter().filter(s.toString()); } }); }
 	 */
+
+	
+	/*this.addNewRule = (Button) findViewById(R.id.buttonAddNewRule);
+			this.addNewRule.setOnClickListener(newRule);
+			// inizialmente bottone disabilitato
+			this.addNewRule.setEnabled(false);
+			// click bottone "AddNewRule"-> interfaccia rule composition
+	
+	View.OnClickListener newRule = new View.OnClickListener() {
+		
+		public void onClick(View v)
+		{
+			
+			int REQUEST_CODE = 1; // code for request
+			// ArrayList<DeviceHome> d = new ArrayList<DeviceHome>();
+			// d = ;
+			Intent intentNewRule = new Intent(MainActivityHomeRules.this, ActivityRuleComposition.class);
+			intentNewRule.putParcelableArrayListExtra("DEVICES_HOME", devicesHomeList);
+			// intentNewRule.putExtra("SUGGESTIONS_MODE", 0);
+			intentNewRule.putStringArrayListExtra("NAMES_OF_RULES", namesOfRules);
+			// set the request code to any code you like,you can identify the
+			// callback via this code
+			startActivityForResult(intentNewRule, REQUEST_CODE);
+			
+		}
+	};
+	
+	*/
+
 }

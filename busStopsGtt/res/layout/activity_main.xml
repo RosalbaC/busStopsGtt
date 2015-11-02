@@ -5,10 +5,29 @@
     android:orientation="vertical"
     tools:context="${relativePackage}.${activityClass}" >
 
-<SearchView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       
+        android:orientation="horizontal" >
+
+        <SearchView
             android:id="@+id/searchViewStop"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+             android:gravity="start" >
+        </SearchView>
+
+        <Button
+            android:id="@+id/buttonToMap"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go to map"
+             android:gravity="end" />
+
+       
+    </LinearLayout>
 
    <!--   <AutoCompleteTextView
         android:id="@+id/searchStop"
